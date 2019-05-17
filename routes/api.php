@@ -17,8 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/users', function (Request $request) {
+Route::middleware('auth:api')->get('/users', function (Request $request) {
 
-    return response()->json(['name' => 'Behrang No']);
+    return response()->json(['name' => Auth::User()->name]);
 
 });
